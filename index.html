@@ -1,0 +1,236 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Studemo — l'app dello studente</title>
+<meta name="description" content="Libri e appunti tra studenti, vicino a te. Pubblichi in un minuto con una foto, ti scrivono subito. Gratis, dalla prima elementare all'università.">
+<meta name="theme-color" content="#1275BC">
+<link rel="icon" href="favicon.png">
+<link rel="apple-touch-icon" href="icona.png">
+<meta property="og:title" content="Studemo — l'app dello studente">
+<meta property="og:description" content="Libri e appunti tra studenti, vicino a te. Pubblichi in un minuto, ti scrivono subito. Gratis.">
+<meta property="og:image" content="icona.png">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="it_IT">
+<style>
+  :root{
+    --azzurro:#1275BC; --azzurro-scuro:#0F5D96; --azzurro-chiaro:#EFF8FF;
+    --verde:#0FB5A6; --inchiostro:#0D1117; --grigio:#5A6472; --bordo:#E8ECF2; --fondo:#F2F7FC;
+    --raggio:20px;
+  }
+  *{box-sizing:border-box}
+  body{
+    margin:0; background:#fff; color:var(--inchiostro);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    line-height:1.55; -webkit-font-smoothing:antialiased;
+  }
+  .contenitore{max-width:1000px;margin:0 auto;padding:0 22px}
+  a{color:var(--azzurro-scuro)}
+
+  header{background:linear-gradient(160deg,var(--fondo) 0%,#fff 70%);padding:26px 0 8px}
+  .marchio{display:flex;align-items:center;gap:12px}
+  .marchio img{width:44px;height:44px;border-radius:11px}
+  .marchio b{font-size:1.35rem;letter-spacing:.2px}
+
+  .eroe{padding:44px 0 56px;display:grid;grid-template-columns:1.15fr .85fr;gap:40px;align-items:center}
+  .eroe h1{font-size:clamp(2.1rem,5vw,3.3rem);line-height:1.08;margin:.2em 0 .3em;letter-spacing:-.5px}
+  .eroe h1 span{color:var(--azzurro)}
+  .eroe p.occhiello{color:var(--azzurro-scuro);font-weight:700;text-transform:uppercase;letter-spacing:1.4px;font-size:.78rem;margin:0}
+  .eroe p.testo{font-size:1.16rem;color:var(--grigio);max-width:34em;margin:0 0 26px}
+  .eroe img.schermo{width:100%;max-width:330px;justify-self:center;filter:drop-shadow(0 24px 44px rgba(15,93,150,.22))}
+
+  .azioni{display:flex;gap:12px;flex-wrap:wrap;align-items:center}
+  .bottone{
+    display:inline-flex;align-items:center;gap:9px;background:var(--azzurro);color:#fff;
+    padding:15px 26px;border-radius:999px;text-decoration:none;font-weight:650;font-size:1.03rem;
+    box-shadow:0 10px 24px rgba(18,117,188,.28);transition:transform .12s ease,box-shadow .12s ease;
+  }
+  .bottone:hover{transform:translateY(-1px);box-shadow:0 14px 30px rgba(18,117,188,.34)}
+  .bottone.chiaro{background:#fff;color:var(--azzurro-scuro);border:1px solid var(--bordo);box-shadow:none}
+  .nota{font-size:.92rem;color:var(--grigio);margin-top:14px}
+
+  section{padding:56px 0}
+  section.grigia{background:var(--fondo)}
+  h2{font-size:clamp(1.6rem,3.4vw,2.15rem);letter-spacing:-.3px;margin:0 0 8px}
+  .sottotitolo{color:var(--grigio);font-size:1.08rem;margin:0 0 34px;max-width:38em}
+
+  .passi{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+  .passo{background:#fff;border:1px solid var(--bordo);border-radius:var(--raggio);padding:26px}
+  .passo .numero{
+    width:38px;height:38px;border-radius:12px;background:var(--azzurro-chiaro);color:var(--azzurro-scuro);
+    display:grid;place-items:center;font-weight:750;margin-bottom:14px
+  }
+  .passo h3{margin:0 0 6px;font-size:1.12rem}
+  .passo p{margin:0;color:var(--grigio)}
+
+  .griglia{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
+  .carta{background:#fff;border:1px solid var(--bordo);border-radius:var(--raggio);padding:24px}
+  .carta h3{margin:0 0 6px;font-size:1.08rem;display:flex;align-items:center;gap:9px}
+  .carta p{margin:0;color:var(--grigio)}
+  .pallino{width:10px;height:10px;border-radius:50%;background:var(--verde);flex:none}
+
+  .fascia{background:var(--azzurro);color:#fff;border-radius:26px;padding:44px;text-align:center;margin:14px 0}
+  .fascia h2{color:#fff;margin-bottom:10px}
+  .fascia p{color:rgba(255,255,255,.92);max-width:34em;margin:0 auto 24px}
+  .fascia .bottone{background:#fff;color:var(--azzurro-scuro);box-shadow:none}
+
+  details{background:#fff;border:1px solid var(--bordo);border-radius:14px;padding:16px 18px;margin-bottom:10px}
+  details summary{cursor:pointer;font-weight:620;list-style:none}
+  details summary::-webkit-details-marker{display:none}
+  details summary::after{content:"+";float:right;color:var(--azzurro);font-weight:700}
+  details[open] summary::after{content:"–"}
+  details p{color:var(--grigio);margin:10px 0 0}
+
+  footer{border-top:1px solid var(--bordo);padding:32px 0 44px;color:var(--grigio);font-size:.94rem}
+  footer .righe{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;align-items:center}
+  footer a{color:var(--grigio);text-decoration:none;margin-right:16px}
+  footer a:hover{color:var(--azzurro-scuro);text-decoration:underline}
+
+  @media(max-width:860px){
+    .eroe{grid-template-columns:1fr;gap:26px;padding:30px 0 40px}
+    .eroe img.schermo{max-width:250px}
+    .passi,.griglia{grid-template-columns:1fr}
+    .fascia{padding:32px 22px}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="contenitore marchio">
+    <img src="icona.png" alt="Studemo">
+    <b>Studemo</b>
+  </div>
+</header>
+
+<div class="contenitore">
+  <div class="eroe">
+    <div>
+      <p class="occhiello">l'app dello studente</p>
+      <h1>I tuoi libri valgono ancora.<br><span>Quelli che ti servono sono già qui.</span></h1>
+      <p class="testo">
+        Su Studemo pubblichi in un minuto i libri e gli appunti che hai finito di usare, e trovi
+        quelli che ti servono — vicino a te, tra studenti come te. Gratis, dalla prima elementare
+        all'ultimo anno di università.
+      </p>
+      <div class="azioni">
+        <a class="bottone" href="#scarica">Scarica Studemo</a>
+        <a class="bottone chiaro" href="#come">Scopri come funziona</a>
+      </div>
+      <p class="nota">Apri e usi subito: bastano un nome e il tuo numero.</p>
+    </div>
+    <img class="schermo" src="icona.png" alt="L'icona di Studemo: un libro aperto con un germoglio">
+  </div>
+</div>
+
+<section class="grigia" id="come">
+  <div class="contenitore">
+    <h2>Tre tocchi e il tuo libro è online</h2>
+    <p class="sottotitolo">Il lavoro noioso lo fa l'app: tu scatti la foto, il resto si compila da solo.</p>
+    <div class="passi">
+      <div class="passo">
+        <div class="numero">1</div>
+        <h3>Scatta la copertina</h3>
+        <p>Titolo, autore, materia e ISBN li legge l'app. Se preferisci, inquadri il codice a barre e finisce lì.</p>
+      </div>
+      <div class="passo">
+        <div class="numero">2</div>
+        <h3>Metti il tuo prezzo</h3>
+        <p>Decidi tu quanto chiedere — oppure lo regali, e qualcuno ti ringrazia.</p>
+      </div>
+      <div class="passo">
+        <div class="numero">3</div>
+        <h3>Ti scrivono e vi vedete</h3>
+        <p>Chi è interessato ti scrive dentro Studemo o su WhatsApp. Vi trovate a scuola o in centro.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="contenitore">
+    <h2>Perché piace</h2>
+    <p class="sottotitolo">È fatta per la scuola, non per vendere qualsiasi cosa.</p>
+    <div class="griglia">
+      <div class="carta">
+        <h3><span class="pallino"></span> Cerca come parli tu</h3>
+        <p>“sbobine fisio”, “mate 3 liceo”, “analisi bramanti”: la ricerca capisce le abbreviazioni, i refusi e l'ISBN.</p>
+      </div>
+      <div class="carta">
+        <h3><span class="pallino"></span> Vicino a te</h3>
+        <p>Prima gli annunci della tua zona e della tua scuola: ci si incontra, senza spedizioni e senza attese.</p>
+      </div>
+      <div class="carta">
+        <h3><span class="pallino"></span> La tua scuola, le tue materie</h3>
+        <p>Scegli il tuo istituto e l'indirizzo: Studemo propone solo le materie che studi davvero.</p>
+      </div>
+      <div class="carta">
+        <h3><span class="pallino"></span> Gente affidabile</h3>
+        <p>Ogni scambio lascia una valutazione a stelle. Chi tratta bene si vede, e si torna volentieri.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="grigia">
+  <div class="contenitore">
+    <h2>Una community serena</h2>
+    <p class="sottotitolo">La tua tranquillità viene prima di tutto.</p>
+    <div class="griglia">
+      <div class="carta">
+        <h3><span class="pallino"></span> Regole chiare all'ingresso</h3>
+        <p>Contenuti veri e scolastici, rispetto per gli altri. Chi non le rispetta viene rimosso.</p>
+      </div>
+      <div class="carta">
+        <h3><span class="pallino"></span> Segnala e blocca, sempre</h3>
+        <p>Su ogni annuncio e ogni profilo. Le segnalazioni le guardiamo entro 24 ore.</p>
+      </div>
+      <div class="carta">
+        <h3><span class="pallino"></span> Il numero resta tuo</h3>
+        <p>Puoi tenerlo nascosto: si apre solo quando tocchi tu “Contatta su WhatsApp”.</p>
+      </div>
+      <div class="carta">
+        <h3><span class="pallino"></span> Nessuna email, nessuna password</h3>
+        <p>Entri col nome che scegli. Anche di fantasia.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="scarica">
+  <div class="contenitore">
+    <div class="fascia">
+      <h2>Comincia oggi con un libro solo</h2>
+      <p>Fotografa il primo libro che non usi più: in un minuto è online, e a settembre serve a qualcuno della tua scuola.</p>
+      <a class="bottone" href="mailto:info@materialabs.it?subject=Studemo%20-%20voglio%20provarla">Scrivimi per la prova</a>
+    </div>
+  </div>
+</section>
+
+<section class="grigia">
+  <div class="contenitore">
+    <h2>Domande giuste</h2>
+    <p class="sottotitolo">Quelle che si fanno tutti, con risposte corte.</p>
+    <details><summary>Quanto costa?</summary><p>Niente. Studemo è gratis: pubblichi, cerchi e scrivi senza pagare nulla.</p></details>
+    <details><summary>Serve registrarsi per guardare?</summary><p>No. Apri l'app e sfogli subito. Nome e numero servono solo quando pubblichi o scrivi a qualcuno.</p></details>
+    <details><summary>Come avviene il pagamento?</summary><p>Fra voi, di persona, come preferite. Studemo vi fa incontrare: non trattiene nulla e non prende commissioni.</p></details>
+    <details><summary>Ci sono spedizioni?</summary><p>No, ed è voluto: gli scambi sono vicini, così è più semplice, più veloce e non costa nulla in più.</p></details>
+    <details><summary>Va bene anche per elementari e medie?</summary><p>Sì. Studemo copre tutta la scuola, dalla prima elementare all'ultimo anno di università.</p></details>
+    <details><summary>Chi c'è dietro?</summary><p>Un progetto italiano, indipendente, nato a Brescia. Si parte dalle scuole della provincia.</p></details>
+  </div>
+</section>
+
+<footer>
+  <div class="contenitore righe">
+    <div>
+      <a href="privacy.html">Privacy</a>
+      <a href="termini.html">Regole di convivenza</a>
+      <a href="mailto:info@materialabs.it">Assistenza</a>
+    </div>
+    <div>© 2026 Studemo · l'app dello studente</div>
+  </div>
+</footer>
+
+</body>
+</html>
