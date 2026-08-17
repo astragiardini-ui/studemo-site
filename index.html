@@ -105,13 +105,14 @@
   .fiducia .spunta{color:var(--verde); font-weight:800}
 
   /* la scena col telefono */
-  .scena{justify-self:center; width:100%; max-width:430px}
+  .scena{justify-self:center; width:100%; max-width:392px}
   .dentro-scena{position:relative}
   .scena .cornice{
     border-radius:var(--raggio-g); overflow:hidden; box-shadow:var(--ombra-alta);
     border:1px solid rgba(255,255,255,.7); transform:rotate(-1.4deg);
+    aspect-ratio:4/5; background:var(--neve);
   }
-  .scena .cornice img{width:100%}
+  .scena .cornice img{width:100%; height:100%; object-fit:cover}
   .etichetta{
     position:absolute; display:flex; align-items:center; gap:9px; background:#fff; color:var(--inchiostro);
     padding:11px 15px; border-radius:15px; box-shadow:var(--ombra-alta); font-size:.9rem; font-weight:600;
@@ -121,8 +122,8 @@
     width:24px; height:24px; border-radius:50%; display:grid; place-items:center; flex:none;
     background:var(--verde-neve); color:#3E9B24; font-size:.8rem; font-weight:800;
   }
-  .etichetta.uno{top:9%; left:-34px; animation:fluttua 5.5s ease-in-out infinite}
-  .etichetta.due{bottom:11%; right:-26px; animation:fluttua 6.5s ease-in-out .8s infinite}
+  .etichetta.uno{top:7%; left:-40px; animation:fluttua 5.5s ease-in-out infinite}
+  .etichetta.due{bottom:9%; right:-30px; animation:fluttua 6.5s ease-in-out .8s infinite}
   .etichetta.due .tondo{background:#E7F0FE; color:var(--blu-vivo)}
   .etichetta .prezzo{font-size:1.05rem; font-weight:800; color:var(--blu-vivo)}
   @keyframes fluttua{0%,100%{transform:translateY(0)}50%{transform:translateY(-9px)}}
@@ -139,6 +140,53 @@
     box-shadow:0 16px 34px rgba(11,74,158,.20); border:1px solid rgba(255,255,255,.8);
   }
 
+  /* ---------- la visione ---------- */
+  .visione{padding:74px 0 66px}
+  .visione .contenitore{max-width:860px}
+  .occhio{
+    display:block; text-align:center; margin:0 0 26px;
+    font-size:.8rem; font-weight:700; letter-spacing:1.6px; text-transform:uppercase; color:var(--blu-scuro);
+  }
+  .occhio::after{
+    content:""; display:block; width:44px; height:3px; border-radius:3px; margin:14px auto 0;
+    background:linear-gradient(90deg,var(--blu-vivo),var(--verde));
+  }
+  .manifesto{
+    text-align:center; text-wrap:balance; margin:0 auto;
+    font-size:clamp(1.35rem,3.1vw,2rem); line-height:1.34; letter-spacing:-.7px;
+    font-weight:600; color:var(--grigio); max-width:24em;
+  }
+  .manifesto.svolta{
+    margin-top:26px; color:var(--inchiostro); font-weight:800; letter-spacing:-1px;
+    font-size:clamp(1.6rem,4vw,2.5rem); line-height:1.16;
+  }
+  .manifesto.svolta em{
+    font-style:normal;
+    background:linear-gradient(120deg,var(--blu-chiaro),var(--blu-vivo) 60%,var(--blu-scuro));
+    -webkit-background-clip:text; background-clip:text; color:transparent;
+  }
+  .pilastri{display:grid; grid-template-columns:repeat(3,1fr); gap:22px; margin-top:44px}
+  .pilastro{
+    background:#fff; border:1px solid var(--bordo); border-radius:var(--raggio); padding:24px 24px 26px;
+    box-shadow:var(--ombra);
+  }
+  .pilastro h3{margin:0 0 8px; font-size:1.08rem; letter-spacing:-.3px}
+  .pilastro p{margin:0; color:var(--grigio); font-size:.99rem; line-height:1.55}
+  .pilastro .puntino{
+    width:40px; height:40px; border-radius:13px; display:grid; place-items:center; margin-bottom:14px;
+    background:var(--neve); color:var(--blu-vivo);
+  }
+  .pilastro .puntino.verde{background:var(--verde-neve); color:#3F9B27}
+  .pilastro .puntino svg{width:22px; height:22px}
+  .firma{
+    text-align:center; margin:40px 0 0; font-size:1.06rem; font-weight:700; color:var(--inchiostro);
+  }
+  .firma span{color:var(--grigio); font-weight:600}
+  @media(max-width:760px){
+    .pilastri{grid-template-columns:1fr}
+    .visione{padding:58px 0 52px}
+  }
+
   /* ---------- i tre passi ---------- */
   .passi{display:grid; grid-template-columns:repeat(3,1fr); gap:26px; position:relative}
   .passo{
@@ -147,7 +195,8 @@
     transition:transform .22s ease, box-shadow .22s ease;
   }
   .passo:hover{transform:translateY(-6px); box-shadow:var(--ombra-alta)}
-  .passo .foto{position:relative; aspect-ratio:4/3; background:var(--neve); flex:none}
+  .passo .foto{position:relative; aspect-ratio:4/3; background:var(--neve); flex:none;
+    box-shadow:inset 0 0 0 1px rgba(11,74,158,.06); border-bottom:1px solid var(--bordo)}
   .passo .foto img{width:100%; height:100%; object-fit:cover}
   .passo .numero{
     position:absolute; left:18px; bottom:-24px; width:54px; height:54px; border-radius:18px;
@@ -201,7 +250,8 @@
     box-shadow:var(--ombra); transition:transform .22s ease, box-shadow .22s ease;
   }
   .tessera:hover{transform:translateY(-5px); box-shadow:var(--ombra-alta)}
-  .tessera .foto{aspect-ratio:4/3; background:var(--neve)}
+  .tessera .foto{aspect-ratio:4/3; background:var(--neve);
+    box-shadow:inset 0 0 0 1px rgba(11,74,158,.06)}
   .tessera .foto img{width:100%; height:100%; object-fit:cover}
   .tessera .testo{padding:24px 26px 28px}
   .tessera.larga{grid-column:1/-1; display:grid; grid-template-columns:.9fr 1.1fr; align-items:center}
@@ -360,6 +410,7 @@
       <b>Studemo</b>
     </a>
     <nav class="menu">
+      <a href="#visione">La visione</a>
       <a href="#come">Come funziona</a>
       <a href="#perche">Perché piace</a>
       <a href="#sostenibilita">Sostenibilità</a>
@@ -399,14 +450,58 @@
     <div class="scena">
       <div class="dentro-scena sale">
       <div class="cornice">
-        <img src="img/eroe-telefono.webp" alt="Uno studente inquadra la copertina di Matematica.blu e l'app compila da sola titolo, autore ed edizione" width="760" height="751" fetchpriority="high">
+        <img src="img/eroe-telefono.webp" alt="Uno studente inquadra la copertina di Matematica.blu e l'app compila da sola titolo, autore ed edizione" width="720" height="900" fetchpriority="high">
       </div>
-      <div class="etichetta uno"><span class="tondo">✓</span> Titolo e autore compilati</div>
+      <div class="etichetta uno"><span class="tondo">✓</span> Si compila da sola</div>
       <div class="etichetta due"><span class="tondo">€</span> <span class="prezzo">12 €</span> il tuo prezzo</div>
       </div>
     </div>
   </div>
 </div>
+
+<!-- ============ LA VISIONE ============ -->
+<section class="visione" id="visione">
+  <div class="contenitore">
+    <span class="occhio appare">Perché esiste Studemo</span>
+
+    <p class="manifesto appare">
+      Ogni giugno migliaia di libri finiscono in cantina.<br>
+      Ogni settembre le stesse famiglie li ricomprano nuovi.
+    </p>
+
+    <p class="manifesto svolta appare">
+      Studemo mette in contatto <em>i due momenti</em>.
+    </p>
+
+    <div class="pilastri">
+      <article class="pilastro appare">
+        <div class="puntino">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><path d="M12 6.6C10.5 5.1 8.4 4.5 4.5 4.6v12.8c3.9-.1 6 .5 7.5 2 1.5-1.5 3.6-2.1 7.5-2V4.6c-3.9-.1-6 .5-7.5 2z"/><path d="M12 6.6v12.8"/></svg>
+        </div>
+        <h3>Il tuo libro vale ancora</h3>
+        <p>Quello che tu hai finito, per qualcun altro comincia adesso. E torna a valere qualcosa, oggi.</p>
+      </article>
+
+      <article class="pilastro appare">
+        <div class="puntino">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21c4.4-4.6 6.6-7.7 6.6-10.4a6.6 6.6 0 1 0-13.2 0C5.4 13.3 7.6 16.4 12 21z"/><circle cx="12" cy="10.4" r="2.3"/></svg>
+        </div>
+        <h3>Vicino a te, a scuola tua</h3>
+        <p>Chi ha il libro che ti serve siede due banchi più in là. Ci si trova all'uscita e si scambia.</p>
+      </article>
+
+      <article class="pilastro appare">
+        <div class="puntino verde">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><path d="M16.5 8a3.5 3.5 0 1 0-3.4-4.3"/><path d="M7.5 21a3.5 3.5 0 1 0-3.4-4.3"/><path d="M17 21a3.5 3.5 0 1 0 0-7"/><path d="M9.6 6.7 6.9 13.4"/><path d="M11 5.6h4.2"/><path d="M10.4 17.6h3.4"/></svg>
+        </div>
+        <h3>È di tutti gli studenti</h3>
+        <p>Dalla prima elementare alla laurea, gratis per sempre. Un libro che gira fa bene due volte.</p>
+      </article>
+    </div>
+
+    <p class="firma appare">Studemo. <span>L'app degli studenti.</span></p>
+  </div>
+</section>
 
 <!-- ============ I TRE PASSI ============ -->
 <section class="neve" id="come">
@@ -726,14 +821,31 @@
   setTimeout(accendi, 400);
 
   // --- ogni blocco compare quando entra in vista, una volta sola ---
+  let restanti = daMostrare;
+  const mostra = elemento => {
+    elemento.classList.add('vista');
+    osservatore.unobserve(elemento);
+  };
   const osservatore = new IntersectionObserver(voci => {
-    voci.forEach(voce => {
-      if (!voce.isIntersecting) return;
-      voce.target.classList.add('vista');
-      osservatore.unobserve(voce.target);
-    });
+    voci.forEach(voce => { if (voce.isIntersecting) mostra(voce.target); });
   }, {threshold: .14, rootMargin: '0px 0px -9% 0px'});
   daMostrare.forEach(e => osservatore.observe(e));
+
+  // Rete di sicurezza. L'osservatore non riferisce nulla mentre la pagina non viene
+  // disegnata (scheda in secondo piano) e può perdere un blocco se lo si supera di
+  // slancio o si arriva diretti a un'ancora tipo /#domande. Allora a ogni passata si
+  // accende comunque tutto quello che è già entrato nello schermo: così non resta mai
+  // un vuoto bianco al posto di un blocco.
+  const recupera = () => {
+    if (!restanti.length) return;
+    const soglia = innerHeight * 0.92;
+    restanti = restanti.filter(elemento => {
+      if (elemento.classList.contains('vista')) return false;
+      if (elemento.getBoundingClientRect().top >= soglia) return true;
+      mostra(elemento);
+      return false;
+    });
+  };
 
   // --- barra di avanzamento, testa staccata e leggero parallasse dell'apertura ---
   let inCoda = false;
@@ -746,11 +858,13 @@
     if (scena && innerWidth > 980) {
       scena.style.transform = `translateY(${Math.min(y, 700) * -0.06}px)`;
     }
+    recupera();
   };
   addEventListener('scroll', () => {
     if (!inCoda) { inCoda = true; requestAnimationFrame(disegna); }
   }, {passive: true});
   addEventListener('resize', disegna, {passive: true});
+  addEventListener('load', disegna);   // a impaginazione finita, con le foto al loro posto
   disegna();
 })();
 </script>
