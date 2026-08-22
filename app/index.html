@@ -1,0 +1,225 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Scarica Studemo</title>
+<meta name="description" content="Studemo, l'app degli studenti: libri e appunti tra ragazzi della stessa scuola. Lascia la tua email e sei tra i primi ad averla.">
+<link rel="icon" href="/favicon.png">
+<meta name="theme-color" content="#1668DC">
+<meta property="og:title" content="Scarica Studemo">
+<meta property="og:description" content="Libri e appunti tra studenti, vicino a te. Gratis.">
+<meta property="og:image" content="https://studemo.it/anteprima.jpg">
+<meta property="og:url" content="https://studemo.it/app">
+<style>
+  *{box-sizing:border-box;margin:0}
+  body{
+    font-family:"SF Pro Display",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
+    background:linear-gradient(165deg,#4C9BF5,#0B4A9E);
+    color:#fff;min-height:100dvh;display:flex;align-items:center;justify-content:center;
+    padding:34px 22px calc(34px + env(safe-area-inset-bottom));line-height:1.5;
+  }
+  .dentro{width:100%;max-width:380px;text-align:center}
+  .segno{width:96px;height:96px;margin:0 auto 20px;display:block;border-radius:23px;box-shadow:0 12px 32px rgba(4,32,70,.34)}
+  h1{font-size:30px;line-height:1.12;letter-spacing:-.6px;font-weight:800;margin-bottom:10px}
+  .guida{font-size:16px;opacity:.94;margin-bottom:26px}
+  .bottone{
+    display:flex;align-items:center;justify-content:center;gap:10px;width:100%;
+    padding:17px 18px;border-radius:15px;text-decoration:none;font-size:17px;font-weight:700;
+    margin-bottom:12px;background:#fff;color:#0B4A9E;box-shadow:0 8px 24px rgba(4,32,70,.2);
+    border:0;cursor:pointer;font-family:inherit;transition:transform .12s ease;
+  }
+  .bottone:active{transform:scale(.985)}
+  .bottone svg{flex:none}
+  .modulo{text-align:left;background:rgba(255,255,255,.13);border:1px solid rgba(255,255,255,.28);
+          border-radius:18px;padding:18px 16px;backdrop-filter:blur(6px)}
+  .modulo h2{font-size:18px;margin-bottom:4px;letter-spacing:-.2px}
+  .modulo p.dice{font-size:14px;opacity:.92;margin-bottom:14px}
+  label{display:block;font-size:13px;font-weight:700;letter-spacing:.3px;margin:12px 0 6px;opacity:.95}
+  .campo{
+    width:100%;padding:14px 14px;border-radius:12px;border:1.5px solid rgba(255,255,255,.4);
+    background:rgba(255,255,255,.96);color:#0E1729;font-size:16px;font-family:inherit;
+  }
+  .campo::placeholder{color:#8496AC}
+  .campo:focus{outline:none;border-color:#fff;box-shadow:0 0 0 4px rgba(255,255,255,.22)}
+  .facolt{font-weight:500;opacity:.8}
+  .esca{position:absolute;left:-9999px}
+  .errore{font-size:13px;color:#FFD9DC;margin-top:8px;display:none}
+  .fatto{display:none;text-align:center}
+  .fatto .spunta{width:58px;height:58px;border-radius:50%;background:#fff;color:#0B4A9E;
+                 display:grid;place-items:center;margin:6px auto 14px;font-size:30px;font-weight:800}
+  .nota{font-size:13px;opacity:.8;margin-top:20px}
+  .nota a{color:#fff}
+  .nascosto{display:none !important}
+</style>
+</head>
+<body>
+<div class="dentro">
+  <img class="segno" src="/icona.png" alt="Studemo" width="96" height="96">
+  <h1>Studemo arriva a settembre</h1>
+  <p class="guida">Libri e appunti tra studenti della stessa scuola. Gratis, dalla prima elementare alla laurea.</p>
+
+  <!-- Quando l'app è negli store questi due pulsanti si accendono da soli: basta
+       riempire APPSTORE e PLAY qui sotto nello script. -->
+  <a class="bottone nascosto" id="ios" href="#">
+    <svg viewBox="0 0 24 24" width="21" height="21" fill="currentColor" aria-hidden="true"><path d="M16.36 12.72c-.02-2.3 1.88-3.4 1.96-3.45-1.07-1.56-2.73-1.78-3.32-1.8-1.41-.14-2.76.83-3.48.83-.72 0-1.83-.81-3-.79-1.54.02-2.96.9-3.75 2.28-1.6 2.78-.41 6.9 1.15 9.16.76 1.1 1.67 2.34 2.86 2.3 1.15-.05 1.58-.74 2.97-.74 1.39 0 1.78.74 3 .72 1.24-.02 2.02-1.12 2.78-2.23.88-1.28 1.24-2.52 1.26-2.58-.03-.01-2.41-.93-2.43-3.7zM14.1 5.9c.63-.77 1.06-1.83.94-2.9-.91.04-2.01.61-2.66 1.37-.58.68-1.09 1.76-.95 2.8 1.01.08 2.04-.51 2.67-1.27z"/></svg>
+    Scarica dall'App Store
+  </a>
+  <a class="bottone nascosto" id="android" href="#">
+    <svg viewBox="0 0 24 24" width="21" height="21" fill="currentColor" aria-hidden="true"><path d="M17.6 9.48l1.84-3.18a.38.38 0 00-.14-.52.38.38 0 00-.52.14l-1.86 3.22a11.4 11.4 0 00-9.84 0L5.22 5.92a.38.38 0 00-.52-.14.38.38 0 00-.14.52L6.4 9.48A10.8 10.8 0 001 18h22a10.8 10.8 0 00-5.4-8.52zM7 15.25a1.1 1.1 0 110-2.2 1.1 1.1 0 010 2.2zm10 0a1.1 1.1 0 110-2.2 1.1 1.1 0 010 2.2z"/></svg>
+    Scarica da Google Play
+  </a>
+
+  <form class="modulo" id="modulo" novalidate>
+    <h2 id="titoloModulo">Sei tra i primi ad averla</h2>
+    <p class="dice" id="diceModulo">Lascia la tua email: ti scrivo io il giorno che esce, e la scarichi prima degli altri.</p>
+
+    <label for="email">La tua email</label>
+    <input class="campo" id="email" name="email" type="email" inputmode="email" autocomplete="email" placeholder="nome@esempio.it" required>
+
+    <label for="scuola">La tua scuola <span class="facolt">— facoltativo</span></label>
+    <input class="campo" id="scuola" name="scuola" type="text" autocomplete="organization" placeholder="Liceo Calini, UniBS…" maxlength="80">
+
+    <label for="telefono">WhatsApp <span class="facolt">— facoltativo, così te lo dico prima</span></label>
+    <input class="campo" id="telefono" name="telefono" type="tel" inputmode="tel" autocomplete="tel" placeholder="334 186 5764" maxlength="24">
+
+    <input class="esca" id="esca" name="cognome" tabindex="-1" autocomplete="off" aria-hidden="true">
+
+    <p class="errore" id="errore"></p>
+    <button class="bottone" id="invia" type="submit" style="margin-top:16px">Avvisami tu</button>
+    <p style="font-size:12px;opacity:.78;margin-top:10px">
+      L'indirizzo serve solo per dirti che Studemo è uscita. Niente pubblicità.
+      <a href="/privacy.html" style="color:#fff">Privacy</a>
+    </p>
+  </form>
+
+  <div class="fatto" id="fatto">
+    <div class="spunta">✓</div>
+    <h2 style="font-size:21px;margin-bottom:8px">Ci sei</h2>
+    <p style="opacity:.92" id="testoFatto">Ti scrivo io appena Studemo è scaricabile. Intanto guarda com'è fatta.</p>
+    <a class="bottone" href="/" style="margin-top:18px">Guarda com'è fatta</a>
+  </div>
+
+  <p class="nota">Gratis, sempre · <a href="/">studemo.it</a></p>
+</div>
+
+<script>
+/*
+  UN SOLO INDIRIZZO CHE PORTA DOVE SERVE — la stessa logica di BeviQui.
+
+  · Quando l'app sarà negli store, si riempiono APPSTORE e PLAY qui sotto: la pagina
+    comincia da sola a mandare la gente allo store giusto, con un tocco.
+  · Finché gli store non ci sono, la pagina raccoglie chi la vuole: sono anche i primi
+    che proveranno la versione Android (a Google servono 12 persone per 14 giorni).
+  · Dentro Instagram e Facebook NON si rimbalza mai verso lo store: il loro browser
+    interno "muore" su una pagina bianca. Si mostra il pulsante e lo tocca l'utente.
+  · Per iOS vale SEMPRE l'indirizzo https apps.apple.com (universal link), mai itms-apps://.
+*/
+(function () {
+  var APPSTORE = '';   // es. 'https://apps.apple.com/it/app/id0000000000'
+  var PLAY     = '';   // es. 'https://play.google.com/store/apps/details?id=com.studemo.app'
+
+  // Per il collaudo si può far finta di essere un altro telefono:
+  //   /app/?ua=Android&resta=1  ·  /app/?ua=iPhone
+  var finto = (location.search.match(/[?&]ua=([^&]+)/) || [])[1];
+  var ua = finto ? decodeURIComponent(finto) : (navigator.userAgent || '');
+  // iPad con iPadOS si maschera da Mac: lo riconosco dal fatto che ha il touch.
+  var iPadComeMac = (navigator.platform === 'MacIntel' || /Macintosh/i.test(ua)) &&
+                    typeof navigator.maxTouchPoints === 'number' && navigator.maxTouchPoints > 1;
+  var iOS = /iPhone|iPad|iPod/i.test(ua) || iPadComeMac;
+  var android = /Android/i.test(ua);
+  var dentroSocial = /Instagram|FBAN|FBAV|FBIOS|FB_IAB|TikTok|musical_ly|Snapchat|Line\/|Pinterest|Twitter|WhatsApp/i.test(ua);
+  var resta = location.search.indexOf('resta=1') >= 0;
+  var sistema = iOS ? 'ios' : android ? 'android' : 'computer';
+
+  var bIos = document.getElementById('ios');
+  var bAnd = document.getElementById('android');
+  var modulo = document.getElementById('modulo');
+
+  if (APPSTORE) { bIos.href = APPSTORE; bIos.classList.remove('nascosto'); }
+  if (PLAY)     { bAnd.href = PLAY;     bAnd.classList.remove('nascosto'); }
+
+  // Sul telefono si mostra solo il pulsante del suo sistema.
+  if (iOS && PLAY) bAnd.classList.add('nascosto');
+  if (android && APPSTORE) bIos.classList.add('nascosto');
+
+  var pronto = (iOS && APPSTORE) || (android && PLAY) || (!iOS && !android && (APPSTORE || PLAY));
+  if (pronto) {
+    modulo.classList.add('nascosto');
+    document.querySelector('h1').textContent = 'Scarica Studemo';
+    if (!resta && !dentroSocial) {
+      if (iOS && APPSTORE) location.replace(APPSTORE);
+      else if (android && PLAY) location.replace(PLAY);
+    }
+    return;
+  }
+
+  // ---- Gli store non ci sono ancora: si raccoglie chi la vuole ----
+  if (android) {
+    document.getElementById('titoloModulo').textContent = 'Provala per primo su Android';
+    document.getElementById('diceModulo').textContent =
+      'Su Android si entra per invito prima che apra a tutti: lascia l’email e ti mando l’accesso.';
+  } else if (iOS) {
+    document.getElementById('diceModulo').textContent =
+      'Lascia la tua email: ti scrivo io il giorno che Studemo è sull’App Store.';
+  }
+
+  var URL = 'https://yfkmhqnxrnhzozszelkc.supabase.co/rest/v1/attesa';
+  var CHIAVE = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inlma21ocW54cm5oem96c3plbGtjIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODY3ODA2NDksImV4cCI6MjEwMjM1NjY0OX0.kHuOwLL5cwlZQauiLYKwK7pt1uXpg-BLwc_TvteWl7k';
+
+  function numeroPulito(t) {
+    var n = (t || '').replace(/[^0-9]/g, '');
+    if (!n) return null;
+    if (n.length === 10 && n.charAt(0) === '3') n = '39' + n;   // cellulare italiano
+    if (n.length < 8 || n.length > 15) return null;
+    return n;
+  }
+
+  modulo.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var errore = document.getElementById('errore');
+    var invia = document.getElementById('invia');
+    var email = document.getElementById('email').value.trim();
+    if (document.getElementById('esca').value) return;           // trappola per i robot
+    if (!/^[^@\s]+@[^@\s]+\.[a-zA-Z]{2,}$/.test(email)) {
+      errore.textContent = 'Controlla l’indirizzo: ci manca qualcosa.';
+      errore.style.display = 'block';
+      return;
+    }
+    errore.style.display = 'none';
+    invia.disabled = true;
+    invia.textContent = 'Un attimo…';
+
+    fetch(URL, {
+      method: 'POST',
+      headers: {
+        'apikey': CHIAVE, 'Authorization': 'Bearer ' + CHIAVE,
+        // solo INSERT: chi conosce l'email di un altro non può sovrascriverne l'iscrizione.
+        // Se è già iscritto il server risponde 409, che qui vale come "ci sei".
+        'Content-Type': 'application/json', 'Prefer': 'return=minimal'
+      },
+      body: JSON.stringify({
+        email: email.toLowerCase(),
+        telefono: numeroPulito(document.getElementById('telefono').value),
+        scuola: document.getElementById('scuola').value.trim() || null,
+        sistema: sistema,
+        fonte: document.referrer && /instagram/i.test(document.referrer) ? 'instagram' : (dentroSocial ? 'social' : 'sito')
+      })
+    }).then(function (r) {
+      if (!r.ok && r.status !== 409) throw new Error(r.status);
+      modulo.classList.add('nascosto');
+      var fatto = document.getElementById('fatto');
+      if (android) document.getElementById('testoFatto').textContent =
+        'Ti mando io l’accesso alla versione Android. Intanto guarda com’è fatta.';
+      fatto.style.display = 'block';
+    }).catch(function () {
+      invia.disabled = false;
+      invia.textContent = 'Avvisami tu';
+      errore.textContent = 'Riprova fra un attimo, oppure scrivimi a studemoapp@gmail.com.';
+      errore.style.display = 'block';
+    });
+  });
+})();
+</script>
+</body>
+</html>

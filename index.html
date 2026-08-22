@@ -140,6 +140,18 @@
     box-shadow:0 16px 34px rgba(11,74,158,.20); border:1px solid rgba(255,255,255,.8);
   }
 
+  /* ---------- barra "scarica" sempre a portata (solo telefono) ---------- */
+  .barra-giu{
+    position:fixed; left:0; right:0; bottom:0; z-index:60; display:none;
+    padding:10px 16px calc(10px + env(safe-area-inset-bottom));
+    background:rgba(255,255,255,.94); backdrop-filter:saturate(180%) blur(14px);
+    border-top:1px solid var(--bordo); box-shadow:0 -6px 24px rgba(11,74,158,.10);
+    transform:translateY(120%); transition:transform .28s ease;
+  }
+  .barra-giu.su{transform:translateY(0)}
+  .barra-giu .bottone{width:100%; justify-content:center; padding:14px 20px}
+  @media(max-width:760px){ .barra-giu{display:block} body{padding-bottom:0} }
+
   /* ---------- la visione ---------- */
   .visione{padding:74px 0 66px}
   .visione .contenitore{max-width:860px}
@@ -449,7 +461,7 @@
       <a href="#serenita">Sicurezza</a>
       <a href="#domande">Domande</a>
     </nav>
-    <a class="bottone" href="#scarica">Provala</a>
+    <a class="bottone" href="/app">Provala</a>
   </div>
 </header>
 
@@ -465,7 +477,7 @@
         settembre e ogni libro fa un altro giro.
       </p>
       <div class="azioni sale">
-        <a class="bottone" href="#scarica">
+        <a class="bottone" href="/app">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12"/><path d="m7 11 5 5 5-5"/><path d="M5 21h14"/></svg>
           Voglio provarla
         </a>
@@ -774,10 +786,10 @@
         <h2>Comincia oggi con un libro solo</h2>
         <p>Fotografa il primo libro che hai finito: in un minuto è online, e a settembre serve a qualcuno della tua scuola.</p>
         <div class="azioni">
-          <a class="bottone bianco" href="mailto:studemoapp@gmail.com?subject=Studemo%20—%20voglio%20provarla">Scrivici, ti facciamo entrare</a>
+          <a class="bottone bianco" href="/app">Voglio Studemo</a>
           <a class="bottone chiaro" href="https://www.instagram.com/studemo.it/" target="_blank" rel="noopener" style="background:rgba(255,255,255,.14); color:#fff; border-color:rgba(255,255,255,.42)">Seguici su Instagram</a>
         </div>
-        <p class="sotto">In arrivo su App Store e Google Play. Intanto la prova è aperta: scrivi e ti mandiamo l'accesso.</p>
+        <p class="sotto">In arrivo su App Store e Google Play. Lascia la tua email: sei tra i primi ad averla.</p>
       </div>
       <div class="foto">
         <img src="img/settembre.webp" alt="Uno zaino blu col germoglio di Studemo, accanto a una pila di libri di scuola" width="900" height="675" loading="lazy">
@@ -924,5 +936,22 @@
 })();
 </script>
 
+<div class="barra-giu" id="barraGiu">
+  <a class="bottone" href="/app">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12"/><path d="m7 11 5 5 5-5"/><path d="M5 21h14"/></svg>
+    Voglio Studemo
+  </a>
+</div>
+<script>
+  // La barra compare appena si comincia a scorrere: il download resta a un tocco,
+  // anche dentro il browser di Instagram.
+  (function(){
+    var barra = document.getElementById('barraGiu');
+    if (!barra) return;
+    function guarda(){ barra.classList.toggle('su', window.scrollY > 380); }
+    guarda();
+    window.addEventListener('scroll', guarda, {passive:true});
+  })();
+</script>
 </body>
 </html>
