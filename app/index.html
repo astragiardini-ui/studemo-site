@@ -203,7 +203,15 @@
         telefono: numeroPulito(document.getElementById('telefono').value),
         scuola: document.getElementById('scuola').value.trim() || null,
         sistema: sistema,
-        fonte: document.referrer && /instagram/i.test(document.referrer) ? 'instagram' : (dentroSocial ? 'social' : 'sito')
+        // Da dove arriva: il `?d=` lo mettiamo noi nei QR stampati, uno per
+        // ogni pezzo di carta. È l'unico modo per sapere QUALE locandina
+        // funziona: senza, si stampano venti fogli e non si impara niente.
+        fonte: (function () {
+          var d = (location.search.match(/[?&]d=([A-Za-z0-9_-]{1,24})/) || [])[1];
+          if (d) return 'carta:' + d;
+          if (document.referrer && /instagram/i.test(document.referrer)) return 'instagram';
+          return dentroSocial ? 'social' : 'sito';
+        })()
       })
     }).then(function (r) {
       if (!r.ok && r.status !== 409) throw new Error(r.status);
