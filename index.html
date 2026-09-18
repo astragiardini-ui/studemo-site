@@ -623,6 +623,63 @@
   </div>
 </section>
 
+<!-- ============ IL LIBRO CHE ASPETTA ============
+  Lo stesso personaggio dei volantini di carta: il libro con la faccia, che in cantina
+  aspetta e poi ritrova uno zaino. Sta qui e non più in alto per un motivo: prima si spiega
+  cosa fa l'app, poi si dice **perché conta**. Ed è il gradino emotivo che porta alla
+  sezione del giro, che subito dopo lo racconta con i numeri.
+
+  È anche coerenza di marca: chi ha visto il manifesto attaccato a scuola e poi apre il
+  sito ritrova la stessa faccia. Due tocchi dello stesso racconto valgono più di due
+  racconti diversi.
+-->
+<style>
+  .racconto { padding: 74px 0 78px; }
+  .racconto .atti {
+    display: grid; grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 34px; margin-top: 38px;
+  }
+  .racconto .atto { text-align: center; }
+  .racconto .atto img {
+    width: 100%; height: auto; max-width: 320px; border-radius: 26px; display: block; margin: 0 auto 18px;
+  }
+  .racconto .atto h3 { font-size: clamp(1.35rem, 3.4vw, 1.9rem); margin: 0 0 8px; }
+  .racconto .atto p { margin: 0; max-width: 34ch; margin-inline: auto; }
+  .racconto .chiusa { margin-top: 40px; text-align: center; }
+  @media (max-width: 680px) {
+    .racconto .atti { grid-template-columns: 1fr; gap: 44px; }
+  }
+</style>
+<section class="racconto" id="racconto">
+  <div class="contenitore">
+    <div class="intestazione appare">
+      <h2>Ogni libro fermo sta aspettando qualcuno</h2>
+      <p class="sottotitolo">
+        In cantina, in garage, in fondo a uno scaffale. Pagine ancora buone che a settembre
+        servono a uno studente della tua stessa scuola.
+      </p>
+    </div>
+
+    <div class="atti">
+      <div class="atto appare">
+        <img src="img/libro-aspetta.webp" alt="Un libro con gli occhi tristi, fermo in cantina, che aspetta" width="900" height="900" loading="lazy">
+        <h3>«Sono qui!»</h3>
+        <p>Chiuso da giugno, e ancora buono. Basta un minuto per rimetterlo in giro.</p>
+      </div>
+
+      <div class="atto appare" style="--ritardo:120ms">
+        <img src="img/libro-felice.webp" alt="Lo stesso libro, felice, con le braccia alzate: qualcuno l'ha ripreso" width="900" height="900" loading="lazy">
+        <h3>«Grazie!»</h3>
+        <p>Adesso è nello zaino di qualcun altro, e ricomincia un anno intero.</p>
+      </div>
+    </div>
+
+    <p class="chiusa-passi appare chiusa">
+      Sono le facce che trovi sui nostri manifesti a scuola. <b>Guarda quanti ne hai fermi in casa.</b>
+    </p>
+  </div>
+</section>
+
 <!-- ============ IL GIRO ============ -->
 <section class="giro" id="sostenibilita">
   <div class="contenitore dentro-giro appare">
