@@ -441,6 +441,17 @@
     .etichetta.uno{left:-10px} .etichetta.due{right:-6px}
     .intestazione{margin-bottom:34px}
   }
+
+  /* Bollino «IA» sulle immagini generate con l'intelligenza artificiale (21/09/2026).
+     AI Act art. 50 e Linee guida della Commissione del 20/07/2026: le immagini
+     realistiche con persone simulate vanno dichiarate in modo chiaro e al primo
+     sguardo; sulle altre è buona pratica. Qui tutte uguali. Vedi docs/ia-e-legge.md */
+  .ia{position:relative}
+  .ia::after{content:"IA"; position:absolute; top:10px; right:10px; z-index:3; pointer-events:none;
+    font:800 11px/1 system-ui,-apple-system,sans-serif; letter-spacing:.08em; padding:5px 7px;
+    border-radius:7px; background:rgba(255,255,255,.94); color:#0b1b33; box-shadow:0 1px 4px rgba(0,0,0,.18)}
+  .racconto .atto.ia::after{top:10px; right:max(10px, calc(50% - 150px))}
+  .nota-ia{margin-top:14px; font-size:.82rem; opacity:.75}
 </style>
 </head>
 <body>
@@ -493,8 +504,8 @@
 
     <div class="scena">
       <div class="dentro-scena sale">
-      <div class="cornice">
-        <img src="img/eroe-telefono.webp" alt="Uno studente inquadra la copertina di un libro di matematica e l'app compila da sola titolo, sottotitolo ed edizione" width="720" height="900" fetchpriority="high">
+      <div class="cornice ia">
+        <img src="img/eroe-telefono.webp" alt="Uno studente inquadra la copertina di un libro di matematica e l'app compila da sola titolo, sottotitolo ed edizione (immagine creata con l'intelligenza artificiale)" width="720" height="900" fetchpriority="high">
       </div>
       <div class="etichetta uno"><span class="tondo">✓</span> Si compila da sola</div>
       <div class="etichetta due"><span class="tondo">€</span> <span class="prezzo">12 €</span> il tuo prezzo</div>
@@ -556,12 +567,12 @@
     </div>
 
     <div class="coppia">
-      <figure class="prova appare">
-        <img src="img/codice-a-barre.webp" alt="Un telefono inquadra il codice a barre sul retro di un libro e mostra già titolo, autori ed editore" width="760" height="1153" loading="lazy">
+      <figure class="prova appare ia">
+        <img src="img/codice-a-barre.webp" alt="Un telefono inquadra il codice a barre sul retro di un libro e mostra già titolo, autori ed editore (immagine creata con l'intelligenza artificiale)" width="760" height="1153" loading="lazy">
         <figcaption><b>Inquadri il codice, è già fatto.</b> Titolo, autori ed editore si compilano da soli: a te resta il prezzo.</figcaption>
       </figure>
-      <figure class="prova appare">
-        <img src="img/lo-regalo.webp" alt="Un libro di chimica con un nastro verde e un cartellino scritto a mano: lo regalo" width="760" height="1146" loading="lazy">
+      <figure class="prova appare ia">
+        <img src="img/lo-regalo.webp" alt="Un libro di chimica con un nastro verde e un cartellino scritto a mano: lo regalo (immagine creata con l'intelligenza artificiale)" width="760" height="1146" loading="lazy">
         <figcaption><b>E c'è chi lo regala.</b> Tanti passano il libro per il gusto di farlo girare. Tu trovi quello che ti serve.</figcaption>
       </figure>
     </div>
@@ -584,8 +595,8 @@
       <svg class="freccia b" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h15"/><path d="m13 6 6 6-6 6"/></svg>
 
       <article class="passo appare">
-        <div class="foto">
-          <img src="img/passo-1-copertina.webp" alt="Una mano fotografa la copertina di un libro di matematica e i campi si riempiono da soli" width="900" height="675" loading="lazy">
+        <div class="foto ia">
+          <img src="img/passo-1-copertina.webp" alt="Una mano fotografa la copertina di un libro di matematica e i campi si riempiono da soli (immagine creata con l'intelligenza artificiale)" width="900" height="675" loading="lazy">
           <div class="numero">1</div>
         </div>
         <div class="testo">
@@ -595,8 +606,8 @@
       </article>
 
       <article class="passo appare">
-        <div class="foto">
-          <img src="img/passo-2-prezzo.webp" alt="Un libro di letteratura con un cartellino scritto a mano da 12 euro" width="900" height="675" loading="lazy">
+        <div class="foto ia">
+          <img src="img/passo-2-prezzo.webp" alt="Un libro di letteratura con un cartellino scritto a mano da 12 euro (immagine creata con l'intelligenza artificiale)" width="900" height="675" loading="lazy">
           <div class="numero">2</div>
         </div>
         <div class="testo">
@@ -606,8 +617,8 @@
       </article>
 
       <article class="passo appare">
-        <div class="foto">
-          <img src="img/passo-3-scrivono.webp" alt="Due messaggi in chat: «È ancora disponibile?» e «Sì, ci vediamo domani»" width="900" height="675" loading="lazy">
+        <div class="foto ia">
+          <img src="img/passo-3-scrivono.webp" alt="Due messaggi in chat: «È ancora disponibile?» e «Sì, ci vediamo domani» (immagine creata con l'intelligenza artificiale)" width="900" height="675" loading="lazy">
           <div class="numero">3</div>
         </div>
         <div class="testo">
@@ -661,14 +672,14 @@
     </div>
 
     <div class="atti">
-      <div class="atto appare">
-        <img src="img/libro-aspetta.webp" alt="Un libro con gli occhi tristi, fermo in cantina, che aspetta" width="900" height="900" loading="lazy">
+      <div class="atto appare ia">
+        <img src="img/libro-aspetta.webp" alt="Un libro con gli occhi tristi, fermo in cantina, che aspetta (immagine creata con l'intelligenza artificiale)" width="900" height="900" loading="lazy">
         <h3>«Sono qui!»</h3>
         <p>Chiuso da giugno, e ancora buono. Basta un minuto per rimetterlo in giro.</p>
       </div>
 
-      <div class="atto appare" style="--ritardo:120ms">
-        <img src="img/libro-felice.webp" alt="Lo stesso libro, felice, con le braccia alzate: qualcuno l'ha ripreso" width="900" height="900" loading="lazy">
+      <div class="atto appare ia" style="--ritardo:120ms">
+        <img src="img/libro-felice.webp" alt="Lo stesso libro, felice, con le braccia alzate: qualcuno l'ha ripreso (immagine creata con l'intelligenza artificiale)" width="900" height="900" loading="lazy">
         <h3>«Grazie!»</h3>
         <p>Adesso è nello zaino di qualcun altro, e ricomincia un anno intero.</p>
       </div>
@@ -745,7 +756,7 @@
 
     <div class="vetrina">
       <article class="tessera appare">
-        <div class="foto"><img src="img/vicino-a-te.webp" alt="Una mappa con la scuola al centro e attorno i libri e gli appunti disponibili" width="820" height="615" loading="lazy"></div>
+        <div class="foto ia"><img src="img/vicino-a-te.webp" alt="Una mappa con la scuola al centro e attorno i libri e gli appunti disponibili (immagine creata con l'intelligenza artificiale)" width="820" height="615" loading="lazy"></div>
         <div class="testo">
           <h3>Vicino a te</h3>
           <p>Prima gli annunci della tua zona e della tua scuola: ci si trova in cinque minuti, si guarda il libro e si chiude lì.</p>
@@ -753,7 +764,7 @@
       </article>
 
       <article class="tessera appare">
-        <div class="foto"><img src="img/lo-scambio.webp" alt="Due studenti si passano un libro davanti al cancello del liceo" width="820" height="615" loading="lazy"></div>
+        <div class="foto ia"><img src="img/lo-scambio.webp" alt="Due studenti si passano un libro davanti al cancello del liceo (immagine creata con l'intelligenza artificiale)" width="820" height="615" loading="lazy"></div>
         <div class="testo">
           <h3>Lo scambio, di persona</h3>
           <p>Scambia, risparmia, studia meglio: il libro passa di mano davanti a scuola, e il prezzo lo decidete voi.</p>
@@ -761,7 +772,7 @@
       </article>
 
       <article class="tessera appare">
-        <div class="foto"><img src="img/le-stelle.webp" alt="Cinque stelle e un pollice in su" width="820" height="615" loading="lazy"></div>
+        <div class="foto ia"><img src="img/le-stelle.webp" alt="Cinque stelle e un pollice in su (immagine creata con l'intelligenza artificiale)" width="820" height="615" loading="lazy"></div>
         <div class="testo">
           <h3>Persone di cui fidarti</h3>
           <p>Ogni scambio lascia una valutazione a stelle. Chi tratta bene si riconosce subito, e da quella persona ci torni volentieri.</p>
@@ -769,7 +780,7 @@
       </article>
 
       <article class="tessera appare">
-        <div class="foto"><img src="img/gli-appunti.webp" alt="Un quaderno aperto con appunti di biologia e storia scritti a mano" width="820" height="615" loading="lazy"></div>
+        <div class="foto ia"><img src="img/gli-appunti.webp" alt="Un quaderno aperto con appunti di biologia e storia scritti a mano (immagine creata con l'intelligenza artificiale)" width="820" height="615" loading="lazy"></div>
         <div class="testo">
           <h3>Anche gli appunti</h3>
           <p>Le tue pagine chiare e ordinate valgono quanto un libro. Condividile: aiuti qualcuno e ti fai aiutare.</p>
@@ -777,7 +788,7 @@
       </article>
 
       <article class="tessera larga appare">
-        <div class="foto"><img src="img/ogni-percorso.webp" alt="Quattro zaini in fila, dal più piccolo delle elementari al più grande dell'università" width="820" height="615" loading="lazy"></div>
+        <div class="foto ia"><img src="img/ogni-percorso.webp" alt="Quattro zaini in fila, dal più piccolo delle elementari al più grande dell'università (immagine creata con l'intelligenza artificiale)" width="820" height="615" loading="lazy"></div>
         <div class="testo">
           <h3>Dalle elementari alla laurea, sempre con te</h3>
           <p>
@@ -848,8 +859,8 @@
         </div>
         <p class="sotto">In arrivo su App Store e Google Play. Lascia la tua email: sei tra i primi ad averla.</p>
       </div>
-      <div class="foto">
-        <img src="img/settembre.webp" alt="Uno zaino blu col germoglio di Studemo, accanto a una pila di libri di scuola" width="900" height="675" loading="lazy">
+      <div class="foto ia">
+        <img src="img/settembre.webp" alt="Uno zaino blu col germoglio di Studemo, accanto a una pila di libri di scuola (immagine creata con l'intelligenza artificiale)" width="900" height="675" loading="lazy">
       </div>
     </div>
   </div>
@@ -882,6 +893,7 @@
       <div class="prima">
         <a class="marchio" href="#"><img src="icona.png" alt="" width="38" height="38"><b>Studemo</b></a>
         <p>L'app degli studenti: libri e appunti tra studenti, vicino a te. Dalla prima elementare alla laurea.</p>
+        <p class="nota-ia">Le immagini con il bollino «IA» sono create con l'intelligenza artificiale: persone e scene sono di fantasia.</p>
         <a class="social" href="https://www.instagram.com/studemo.it/" target="_blank" rel="noopener">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="5.5"/><circle cx="12" cy="12" r="4"/><circle cx="17.4" cy="6.6" r="1.1" fill="currentColor" stroke="none"/></svg>
           @studemo.it
