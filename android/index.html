@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Studemo per Android</title>
+<meta name="description" content="Installa Studemo sul telefono Android: libri e appunti tra studenti della stessa scuola. Gratis.">
+<link rel="icon" href="/favicon.png">
+<meta name="theme-color" content="#1668DC">
+<meta property="og:title" content="Studemo per Android">
+<meta property="og:description" content="Installa Studemo sul telefono Android. Gratis.">
+<meta property="og:image" content="https://studemo.it/anteprima.jpg">
+<meta property="og:url" content="https://studemo.it/android/">
+<style>
+  *{box-sizing:border-box;margin:0}
+  body{
+    font-family:"SF Pro Display",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
+    background:linear-gradient(165deg,#4C9BF5,#0B4A9E);
+    color:#fff;min-height:100dvh;display:flex;align-items:center;justify-content:center;
+    padding:34px 22px calc(34px + env(safe-area-inset-bottom));line-height:1.5;
+  }
+  .dentro{width:100%;max-width:380px;text-align:center}
+  .segno{width:92px;height:92px;margin:0 auto 18px;display:block;border-radius:22px;box-shadow:0 12px 32px rgba(4,32,70,.34)}
+  h1{font-size:28px;line-height:1.14;letter-spacing:-.5px;font-weight:800;margin-bottom:10px}
+  .guida{font-size:16px;opacity:.94;margin-bottom:24px}
+  .bottone{
+    display:flex;align-items:center;justify-content:center;gap:12px;width:100%;
+    padding:17px 18px;border-radius:15px;text-decoration:none;font-size:17px;font-weight:700;
+    background:#fff;color:#0B4A9E;box-shadow:0 8px 24px rgba(4,32,70,.2);
+    transition:transform .12s ease;
+  }
+  .bottone:active{transform:scale(.985)}
+  .bottone svg{flex:none}
+  .passi{text-align:left;background:rgba(255,255,255,.13);border:1px solid rgba(255,255,255,.28);
+         border-radius:18px;padding:16px 18px;margin-top:18px;font-size:15px}
+  .passi b{display:block;margin-bottom:8px}
+  .passi ol{margin:0;padding-left:20px}
+  .passi li{margin-bottom:6px}
+  .nota{font-size:13px;opacity:.82;margin-top:20px}
+  .nota a{color:#fff}
+  .indietro{display:inline-block;margin-top:16px;color:#fff;opacity:.9;font-size:14px}
+  .nascosto{display:none !important}
+</style>
+</head>
+<body>
+<div class="dentro">
+  <img class="segno" src="/icona.png" alt="Studemo" width="92" height="92">
+  <h1>Studemo sul tuo Android</h1>
+  <p class="guida">Libri e appunti degli studenti della tua scuola. Gratis, dalla prima elementare alla laurea.</p>
+
+  <a class="bottone" id="scarica" href="#">
+    <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor" aria-hidden="true"><path d="M17.6 9.48l1.84-3.18a.38.38 0 00-.14-.52.38.38 0 00-.52.14l-1.86 3.22a11.4 11.4 0 00-9.84 0L5.22 5.92a.38.38 0 00-.52-.14.38.38 0 00-.14.52L6.4 9.48A10.8 10.8 0 001 18h22a10.8 10.8 0 00-5.4-8.52zM7 15.25a1.1 1.1 0 110-2.2 1.1 1.1 0 010 2.2zm10 0a1.1 1.1 0 110-2.2 1.1 1.1 0 010 2.2z"/></svg>
+    Installa Studemo
+  </a>
+
+  <div class="passi" id="passi">
+    <b>Come si installa, in mezzo minuto</b>
+    <ol>
+      <li>Tocca <strong>Installa Studemo</strong>: parte il file (185 MB, meglio col wi-fi).</li>
+      <li>Apri il file appena scaricato.</li>
+      <li>Se il telefono chiede il permesso, tocca <strong>Consenti</strong> e poi <strong>Installa</strong>.</li>
+    </ol>
+  </div>
+
+  <p class="nota" id="aiutoSocial" style="display:none">
+    Il file resta fermo? Tocca <strong>&#8942;</strong> in alto a destra e scegli <strong>Apri in Chrome</strong>.
+  </p>
+
+  <div class="passi nascosto" id="inArrivo">
+    <b>Sto preparando il file</b>
+    Lascia la tua email sulla <a href="/app" style="color:#fff;font-weight:700">pagina di Studemo</a>:
+    ti scrivo io appena l'app per Android è pronta da installare.
+  </div>
+
+  <p class="nota">
+    Google Play arriva dopo: il negozio chiede prima un periodo di prova con dodici persone.
+    Questo file è la stessa app, con gli aggiornamenti dentro.
+  </p>
+  <a class="indietro" href="/">← studemo.it</a>
+</div>
+
+<script>
+(function () {
+  // Il file dell'app. Sta in una «release» del repo del sito: un indirizzo che non scade,
+  // mentre quelli di Expo durano un mese e poi rispondono 404 (successo il 25/09/2026).
+  // Quando Studemo sarà su Google Play, si riempie PLAY qui sotto: il pulsante porta al
+  // negozio, che è meglio — di là l'app si aggiorna da sola e i tester contano per Google.
+  var APK  = 'https://github.com/astragiardini-ui/studemo-site/releases/download/android-1.2.0/Studemo.apk';   // 1.2.0 (build 3), canale production
+  var PLAY = '';
+
+  var bottone = document.getElementById('scarica');
+  if (PLAY) {
+    bottone.href = PLAY;
+    bottone.lastChild.textContent = ' Scarica da Google Play';
+    document.getElementById('passi').classList.add('nascosto');
+  } else if (APK) {
+    bottone.href = APK;
+    bottone.setAttribute('download', 'Studemo.apk');
+  } else {
+    bottone.classList.add('nascosto');
+    document.getElementById('passi').classList.add('nascosto');
+    document.getElementById('inArrivo').classList.remove('nascosto');
+  }
+
+  // Dentro Instagram o Facebook il file può non partire: si suggerisce «Apri in Chrome».
+  if (/Instagram|FBAN|FBAV|FB_IAB|TikTok|Snapchat|Line\//i.test(navigator.userAgent || '')) {
+    document.getElementById('aiutoSocial').style.display = 'block';
+  }
+})();
+</script>
+</body>
+</html>

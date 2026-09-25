@@ -31,6 +31,10 @@
   }
   .bottone:active{transform:scale(.985)}
   .bottone svg{flex:none}
+  .scelte{display:grid;gap:12px;margin-bottom:22px}
+  .bottone .testo{display:flex;flex-direction:column;align-items:flex-start;line-height:1.2}
+  .bottone .testo small{font-weight:600;font-size:13px;opacity:.72}
+  .bottone.pieno{justify-content:flex-start;gap:14px;padding:15px 18px}
   .modulo{text-align:left;background:rgba(255,255,255,.13);border:1px solid rgba(255,255,255,.28);
           border-radius:18px;padding:18px 16px;backdrop-filter:blur(6px)}
   .modulo h2{font-size:18px;margin-bottom:4px;letter-spacing:-.2px}
@@ -56,19 +60,23 @@
 <body>
 <div class="dentro">
   <img class="segno" src="/icona.png" alt="Studemo" width="96" height="96">
-  <h1>Studemo arriva a settembre</h1>
+  <h1>Scarica Studemo</h1>
   <p class="guida">Libri e appunti tra studenti della stessa scuola. Gratis, dalla prima elementare alla laurea.</p>
 
-  <!-- Quando l'app è negli store questi due pulsanti si accendono da soli: basta
-       riempire APPSTORE e PLAY qui sotto nello script. -->
-  <a class="bottone nascosto" id="ios" href="#">
-    <svg viewBox="0 0 24 24" width="21" height="21" fill="currentColor" aria-hidden="true"><path d="M16.36 12.72c-.02-2.3 1.88-3.4 1.96-3.45-1.07-1.56-2.73-1.78-3.32-1.8-1.41-.14-2.76.83-3.48.83-.72 0-1.83-.81-3-.79-1.54.02-2.96.9-3.75 2.28-1.6 2.78-.41 6.9 1.15 9.16.76 1.1 1.67 2.34 2.86 2.3 1.15-.05 1.58-.74 2.97-.74 1.39 0 1.78.74 3 .72 1.24-.02 2.02-1.12 2.78-2.23.88-1.28 1.24-2.52 1.26-2.58-.03-.01-2.41-.93-2.43-3.7zM14.1 5.9c.63-.77 1.06-1.83.94-2.9-.91.04-2.01.61-2.66 1.37-.58.68-1.09 1.76-.95 2.8 1.01.08 2.04-.51 2.67-1.27z"/></svg>
-    Scarica dall'App Store
-  </a>
-  <a class="bottone nascosto" id="android" href="#">
-    <svg viewBox="0 0 24 24" width="21" height="21" fill="currentColor" aria-hidden="true"><path d="M17.6 9.48l1.84-3.18a.38.38 0 00-.14-.52.38.38 0 00-.52.14l-1.86 3.22a11.4 11.4 0 00-9.84 0L5.22 5.92a.38.38 0 00-.52-.14.38.38 0 00-.14.52L6.4 9.48A10.8 10.8 0 001 18h22a10.8 10.8 0 00-5.4-8.52zM7 15.25a1.1 1.1 0 110-2.2 1.1 1.1 0 010 2.2zm10 0a1.1 1.1 0 110-2.2 1.1 1.1 0 010 2.2z"/></svg>
-    Scarica da Google Play
-  </a>
+  <!-- I DUE PULSANTI: mela e robottino, come su BeviQui. Il testo sotto ognuno dice
+       cosa succede davvero toccandolo, perché oggi iPhone e Android stanno a due punti
+       diversi del cammino. Quando gli store sono aperti si riempiono APPSTORE e PLAY
+       nello script e i pulsanti diventano «Scarica»: il resto si adatta da solo. -->
+  <div class="scelte" id="scelte">
+    <a class="bottone" id="ios" href="#modulo">
+      <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor" aria-hidden="true"><path d="M16.36 12.72c-.02-2.3 1.88-3.4 1.96-3.45-1.07-1.56-2.73-1.78-3.32-1.8-1.41-.14-2.76.83-3.48.83-.72 0-1.83-.81-3-.79-1.54.02-2.96.9-3.75 2.28-1.6 2.78-.41 6.9 1.15 9.16.76 1.1 1.67 2.34 2.86 2.3 1.15-.05 1.58-.74 2.97-.74 1.39 0 1.78.74 3 .72 1.24-.02 2.02-1.12 2.78-2.23.88-1.28 1.24-2.52 1.26-2.58-.03-.01-2.41-.93-2.43-3.7zM14.1 5.9c.63-.77 1.06-1.83.94-2.9-.91.04-2.01.61-2.66 1.37-.58.68-1.09 1.76-.95 2.8 1.01.08 2.04-.51 2.67-1.27z"/></svg>
+      <span class="testo"><b id="iosTitolo">iPhone e iPad</b><small id="iosSotto">avvisami quando esce</small></span>
+    </a>
+    <a class="bottone" id="android" href="/android/">
+      <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor" aria-hidden="true"><path d="M17.6 9.48l1.84-3.18a.38.38 0 00-.14-.52.38.38 0 00-.52.14l-1.86 3.22a11.4 11.4 0 00-9.84 0L5.22 5.92a.38.38 0 00-.52-.14.38.38 0 00-.14.52L6.4 9.48A10.8 10.8 0 001 18h22a10.8 10.8 0 00-5.4-8.52zM7 15.25a1.1 1.1 0 110-2.2 1.1 1.1 0 010 2.2zm10 0a1.1 1.1 0 110-2.2 1.1 1.1 0 010 2.2z"/></svg>
+      <span class="testo"><b id="androidTitolo">Android</b><small id="androidSotto">scaricala adesso</small></span>
+    </a>
+  </div>
 
   <form class="modulo" id="modulo" novalidate>
     <h2 id="titoloModulo">Sei tra i primi ad averla</h2>
@@ -116,8 +124,14 @@
   · Per iOS vale SEMPRE l'indirizzo https apps.apple.com (universal link), mai itms-apps://.
 */
 (function () {
-  var APPSTORE = '';   // es. 'https://apps.apple.com/it/app/id0000000000'
-  var PLAY     = '';   // es. 'https://play.google.com/store/apps/details?id=com.studemo.app'
+  // I QUATTRO INDIRIZZI. Si riempiono man mano che le porte si aprono: la pagina si
+  // riadatta da sola, non c'è altro da toccare.
+  // ⚠️ Quando l'app sarà sull'App Store, Apple chiede il suo distintivo ufficiale
+  // «Scarica su App Store» al posto della sola mela: si scarica da developer.apple.com.
+  var APPSTORE   = '';   // es. 'https://apps.apple.com/it/app/id6810581492'
+  var TESTFLIGHT = '';   // prova in anteprima su iPhone: si riapre quando Apple approva la beta
+  var PLAY       = '';   // es. 'https://play.google.com/store/apps/details?id=com.studemo.app'
+  var ANDROID    = '/android/';   // la pagina che dà l'app da installare a mano: c'è sempre
 
   // Per il collaudo si può far finta di essere un altro telefono:
   //   /app/?ua=Android&resta=1  ·  /app/?ua=iPhone
@@ -134,23 +148,36 @@
 
   var bIos = document.getElementById('ios');
   var bAnd = document.getElementById('android');
+  var scelte = document.getElementById('scelte');
   var modulo = document.getElementById('modulo');
 
-  if (APPSTORE) { bIos.href = APPSTORE; bIos.classList.remove('nascosto'); }
-  if (PLAY)     { bAnd.href = PLAY;     bAnd.classList.remove('nascosto'); }
+  // --- il pulsante della mela ---
+  if (APPSTORE) {
+    bIos.href = APPSTORE;
+    document.getElementById('iosSotto').textContent = 'scarica dall\u2019App Store';
+  } else if (TESTFLIGHT) {
+    bIos.href = TESTFLIGHT;
+    document.getElementById('iosSotto').textContent = 'provala in anteprima con TestFlight';
+  }
+  // --- il pulsante del robottino ---
+  if (PLAY) {
+    bAnd.href = PLAY;
+    document.getElementById('androidSotto').textContent = 'scarica da Google Play';
+  }
 
-  // Sul telefono si mostra solo il pulsante del suo sistema.
-  if (iOS && PLAY) bAnd.classList.add('nascosto');
-  if (android && APPSTORE) bIos.classList.add('nascosto');
+  // Il sistema di chi guarda va per primo: sul suo telefono il pulsante giusto
+  // dev'essere quello sotto il pollice, non il secondo.
+  if (android) scelte.insertBefore(bAnd, bIos);
 
-  var pronto = (iOS && APPSTORE) || (android && PLAY) || (!iOS && !android && (APPSTORE || PLAY));
-  if (pronto) {
+  // Quando l'app è sui due store la pagina diventa un semplice smistatore: niente
+  // modulo, e dal telefono si va dritti allo store con un tocco solo.
+  // ⚠️ Mai rimbalzo dentro Instagram/Facebook: il loro browser interno finisce su una
+  // pagina bianca. E mai rimbalzo verso TestFlight o verso la pagina Android: lì c'è da
+  // leggere due righe prima di installare.
+  var negozio = (iOS && APPSTORE) || (android && PLAY);
+  if (APPSTORE && PLAY) {
     modulo.classList.add('nascosto');
-    document.querySelector('h1').textContent = 'Scarica Studemo';
-    if (!resta && !dentroSocial) {
-      if (iOS && APPSTORE) location.replace(APPSTORE);
-      else if (android && PLAY) location.replace(PLAY);
-    }
+    if (negozio && !resta && !dentroSocial) location.replace(negozio);
     return;
   }
 
